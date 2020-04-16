@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  note-api:
+    image: note-api
+    container_name: note-api
+    build:
+      context: .
+      dockerfile: Note.Api/Dockerfile
+    ports:
+      - "5000:80"
+
+networks:
+  diglett-net:
+    driver: bridge
