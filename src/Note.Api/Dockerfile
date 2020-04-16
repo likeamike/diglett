@@ -9,7 +9,7 @@ RUN dotnet publish --no-restore -c Release -o /diglett
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS final
-EXPOSE 5000
+EXPOSE 80
 WORKDIR /diglett
 COPY --from=build /diglett .
 ENTRYPOINT [ "dotnet", "Note.Api.dll" ]
