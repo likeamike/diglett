@@ -1,4 +1,4 @@
-version: "3.7"
+version: "2.3"
 
 services:
   note-api:
@@ -7,8 +7,24 @@ services:
     build:
       context: .
       dockerfile: Note.Api/deploy/Dockerfile
+    healthcheck:
+      test: curl -f localhost:80/check
+      interval: 1s
+      timeout: 1s
+      retries: 1
+      start_period: 1s
+
+  diglett-nginx:
+    image: diglett-nginx
+    container_name: diglett-nginx
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    depends_on:
+      note-api:
+        condition: service_healthy
     ports:
-      - "5000:80"
+      - "80:80"
 
 networks:
   diglett-net:
