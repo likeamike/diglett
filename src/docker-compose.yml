@@ -2,11 +2,11 @@ version: "2.3"
 
 services:
   note-api:
-    image: note-api
-    container_name: note-api
+    image: weather-api
+    container_name: weather-api
     build:
       context: .
-      dockerfile: Note.Api/deploy/Dockerfile
+      dockerfile: Weather.Api/deploy/Dockerfile
     healthcheck:
       test: curl -f localhost:80/check
       interval: 1s

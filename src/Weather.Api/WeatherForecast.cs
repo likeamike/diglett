@@ -1,6 +1,6 @@
 using System;
 
-namespace Note.Api
+namespace Weather.Api
 {
     public class WeatherForecast
     {
